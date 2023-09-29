@@ -4,7 +4,7 @@ Twitter Clone - Created for demonstration purpose backend functionality.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Twitter Clone - Created for demonstration purpose backend functionality.
 
 ## Getting Started
 
