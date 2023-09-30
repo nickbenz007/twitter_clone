@@ -8,7 +8,7 @@ const tweets = expressAsyncHandler(async (req, res) => {
 });
 
 const postTweet = expressAsyncHandler(async (req, res) => {
-  const { message, likeCounts, id } = req.body;
+  const { message, likeCounts } = req.body;
   const tweet = await Tweet.create({
     message,
     likeCounts,
@@ -19,26 +19,23 @@ const postTweet = expressAsyncHandler(async (req, res) => {
 });
 
 const deleteTweet = expressAsyncHandler(async (req, res) => {
-  try {
-    const tweetId = req.params.id;
-    const tweet = await Tweet.findById(tweetId);
-
-    if (!tweet) {
-      return res.status(404).json({ message: 'Tweet not found' });
-    }
-
-    if (tweet.user.toString() !== req.user._id.toString()) {
-      return res
-        .status(403)
-        .json({ message: 'You are not authorized to delete this tweet' });
-    }
-
-    await tweet.remove();
-    res.json({ message: 'Tweet deleted successfully' });
-  } catch (err) {
-    res.status(500).json({ message: 'Error deleting tweet', error: err });
-  }
-  res.send('delete tweets');
+  // try {
+  //   const tweetId = req.params.id;
+  //   const tweet = await Tweet.findById(tweetId);
+  //   if (!tweet) {
+  //     return res.status(404).json({ message: 'Tweet not found' });
+  //   }
+  //   if (tweet.user.toString() !== req.user._id.toString()) {
+  //     return res
+  //       .status(403)
+  //       .json({ message: 'You are not authorized to delete this tweet' });
+  //   }
+  //   await tweet.remove();
+  //   res.json({ message: 'Tweet deleted successfully' });
+  // } catch (err) {
+  //   res.status(500).json({ message: 'Error deleting tweet', error: err });
+  // }
+  // res.send('delete tweets');
 });
 
 export { tweets, postTweet, deleteTweet };

@@ -23,7 +23,7 @@ router
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
 router.get('/tweets', protect, tweets);
-router.post('/tweets', protect, postTweet);
-router.delete('/tweets/:id', protect, deleteTweet);
+router.post('/me/tweets', protect, postTweet);
+router.delete('/me/tweets/:id', protect, deleteTweet);
 
 export default router;
